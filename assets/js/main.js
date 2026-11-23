@@ -1102,32 +1102,43 @@
     const navLinks = document.querySelectorAll('.nav-link');
     const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-drawer-footer a');
 
-    function closeMobileMenu() {
+    let savedScrollY = 0;
+
+    function closeMobileMenu(isNavigating = false) {
       if (!mobileToggle || !mobileDrawer) return;
       mobileToggle.classList.remove('is-active');
       mobileToggle.setAttribute('aria-expanded', 'false');
       mobileDrawer.classList.remove('is-open');
       mobileDrawer.setAttribute('aria-hidden', 'true');
+      
+      document.body.classList.remove('menu-open');
+      document.body.style.overflow = '';
+
+      if (!isNavigating && typeof savedScrollY === 'number') {
+        window.scrollTo({
+          top: savedScrollY,
+          behavior: 'instant'
+        });
+      }
+
+      const currentY = isNavigating ? (window.scrollY || window.pageYOffset) : savedScrollY;
       if (header) {
         header.classList.remove('is-menu-open');
-        const scrollY = window.scrollY || window.pageYOffset;
-        if (scrollY > 48) {
+        if (currentY > 48) {
           header.classList.add('is-scrolled');
         } else {
           header.classList.remove('is-scrolled');
         }
       }
-      document.documentElement.classList.remove('menu-open');
-      document.body.classList.remove('menu-open');
-      document.body.style.overflow = '';
     }
 
     function toggleMobileMenu() {
       if (!mobileToggle || !mobileDrawer) return;
       const isOpen = mobileDrawer.classList.contains('is-open');
       if (isOpen) {
-        closeMobileMenu();
+        closeMobileMenu(false);
       } else {
+        savedScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
         mobileToggle.classList.add('is-active');
         mobileToggle.setAttribute('aria-expanded', 'true');
         mobileDrawer.classList.add('is-open');
@@ -1135,7 +1146,6 @@
         if (header) {
           header.classList.add('is-menu-open');
         }
-        document.documentElement.classList.add('menu-open');
         document.body.classList.add('menu-open');
         document.body.style.overflow = 'hidden';
       }
@@ -1149,17 +1159,19 @@
     if (brandLogo) {
       brandLogo.addEventListener('click', () => {
         if (mobileDrawer && mobileDrawer.classList.contains('is-open')) {
-          closeMobileMenu();
+          closeMobileMenu(true);
         }
       });
     }
 
     mobileLinks.forEach((link) => {
-      link.addEventListener('click', closeMobileMenu);
+      link.addEventListener('click', () => {
+        closeMobileMenu(true);
+      });
     });
 
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMobileMenu();
+      if (e.key === 'Escape') closeMobileMenu(false);
     });
 
     // Scroll handler for sticky header, back-to-top button, and subtle hero parallax
