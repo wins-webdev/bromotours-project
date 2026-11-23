@@ -3042,6 +3042,7 @@ body.menu-open {
     gap: 1rem;
   }
 
+  .exp-sticky-top,
   .exp-coords,
   .exp-highlights-row {
     display: none !important;
