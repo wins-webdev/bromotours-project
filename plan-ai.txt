@@ -1,0 +1,652 @@
+# BROMO TOURS - STATIC LANDING PAGE DEVELOPMENT
+
+Act as a Senior Frontend Developer, Creative UI/UX Designer, and Digital Art Director.
+
+Your task is to build a premium, bold, creative, and fully responsive landing page for a Tour & Travel Agency named **BROMO TOURS**, targeting international travelers.
+
+Use the uploaded website mockup as the primary visual reference, but adapt the visual identity, imagery, copywriting, and user experience specifically for Mount Bromo and East Java, Indonesia.
+
+## 1. PROJECT OBJECTIVE
+
+Build a complete static frontend landing page using:
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+
+This project is currently in Phase 1.
+
+IMPORTANT:
+Do not build a backend, database, API, authentication, or Admin Dashboard yet.
+
+The website will be converted into a dynamic application in Phase 2 after the frontend design is approved.
+
+The current focus is:
+- Premium visual design.
+- Responsive layouts.
+- Interactive frontend.
+- Smooth animations.
+- Professional user experience.
+- WhatsApp lead generation.
+
+Do not use React, Next.js, Vue, Angular, Bootstrap, or Tailwind CSS.
+
+The website must run directly in a browser.
+
+## 2. BRAND IDENTITY
+
+Brand name: BROMO TOURS
+
+Business type: Tour & Travel Agency
+
+Main destination: Mount Bromo, East Java, Indonesia.
+
+Target audience:
+- International travelers.
+- Adventure seekers.
+- Couples.
+- Solo travelers.
+- Families.
+- Photography enthusiasts.
+- Nature and culture explorers.
+
+Brand personality:
+- Adventurous.
+- Authentic.
+- Bold.
+- Cinematic.
+- Friendly.
+- Professional.
+- Memorable.
+
+Creative concept:
+
+"CHASE THE SUNRISE. DISCOVER THE EXTRAORDINARY."
+
+The website should communicate the excitement of exploring Mount Bromo through extraordinary landscapes, sunrise adventures, local culture, and memorable travel experiences.
+
+## 3. VISUAL DESIGN SYSTEM
+
+Create a distinctive adventure travel aesthetic.
+
+Color palette:
+
+Primary:
+- Forest Green: #172B25
+- Warm Sand: #F4EFE4
+
+Accent:
+- Coral Orange: #FF6545
+- Lime Green: #D9ED74
+
+Neutral:
+- Charcoal: #252525
+- White: #FFFFFF
+
+Typography:
+- Space Grotesk for headlines.
+- DM Sans for body text.
+
+Design characteristics:
+- Oversized typography.
+- Cinematic landscape photography.
+- Editorial layouts.
+- Asymmetrical compositions.
+- Strong visual hierarchy.
+- Generous whitespace.
+- Large immersive images.
+- Elegant dark and light section transitions.
+- Minimal decorative elements.
+
+Use dramatic Mount Bromo photography as the primary visual identity.
+
+Photography direction:
+- Golden sunrise above Mount Bromo.
+- Sea of Sand.
+- Bromo volcanic crater.
+- Jeep adventure.
+- Savanna and Teletubbies Hill.
+- Tengger local culture.
+- Mountain landscapes.
+- Authentic travel moments.
+
+Avoid generic tropical beach photography and unrelated Bali imagery.
+
+Use realistic, high-quality destination photography.
+
+## 4. WEBSITE STRUCTURE
+
+Build the following complete landing page.
+
+### SECTION 01 - HEADER / NAVIGATION
+
+Create a modern sticky navigation.
+
+Logo:
+BROMO TOURS
+
+Navigation:
+- Home
+- Experiences
+- Tour Packages
+- About Us
+- Gallery
+- Contact
+
+Primary CTA:
+PLAN YOUR TRIP
+
+Requirements:
+- Transparent header over hero photography.
+- Background transition on scroll.
+- Responsive mobile hamburger navigation.
+- Smooth scrolling.
+- Clear CTA hierarchy.
+
+### SECTION 02 - HERO SECTION
+
+Create a cinematic full-width hero section.
+
+Background:
+A breathtaking Mount Bromo sunrise landscape with dramatic mountains, golden morning light, and a jeep adventure atmosphere.
+
+Main headline:
+
+"CHASE THE SUNRISE.
+DISCOVER THE EXTRAORDINARY."
+
+Supporting text:
+
+"Experience the magic of Mount Bromo through unforgettable adventures, breathtaking landscapes, and authentic local experiences."
+
+Primary CTA:
+EXPLORE OUR TOURS
+
+Secondary CTA:
+PLAN YOUR ADVENTURE
+
+Additional elements:
+- Location label: Mount Bromo, East Java, Indonesia.
+- Small editorial labels.
+- Subtle scroll indicator.
+- Bold oversized typography.
+- Cinematic image overlay.
+- Smooth text entrance animation.
+
+The hero should create an immediate emotional connection.
+
+### SECTION 03 - TRUST INDICATORS
+
+Create a clean horizontal statistics section.
+
+Display four indicators:
+- Years of Experience.
+- Happy Travelers.
+- Unique Experiences.
+- Local Travel Experts.
+
+Use editable placeholder values.
+
+Do not invent real statistics.
+
+### SECTION 04 - TRAVEL EXPERIENCES
+
+Headline:
+
+"FIND YOUR KIND OF ADVENTURE."
+
+Create four visual experience categories:
+
+1. Sunrise Adventures.
+2. Jeep & Off-Road Exploration.
+3. Nature & Mountain Discovery.
+4. Local Culture & Experiences.
+
+Each category should have:
+- Large photography.
+- Category title.
+- Short description.
+- Explore link.
+
+Use editorial image compositions and varied image sizes.
+
+### SECTION 05 - FEATURED TOURS CAROUSEL
+
+IMPORTANT:
+This section is a major visual feature of the website.
+
+Create a FULL-WIDTH, AUTOMATICALLY SLIDING HORIZONTAL TOUR CAROUSEL.
+
+Section headline:
+
+"FIND YOUR NEXT ADVENTURE."
+
+Supporting text:
+
+"Discover unforgettable journeys through the extraordinary landscapes of Mount Bromo."
+
+Suggested sample tours:
+
+1. Bromo Sunrise Adventure
+2. Bromo Jeep Expedition
+3. Bromo Crater Exploration
+4. Bromo Savanna Discovery
+5. Bromo Photography Journey
+6. Private Bromo Experience
+
+Use these as editable sample tour data. Do not imply every package is an existing confirmed business offering.
+
+TOUR CARD DESIGN:
+
+- Tall portrait-style cards.
+- Desktop card height: approximately 420px to 480px.
+- Large background photography.
+- Image overlay gradient for text readability.
+- Tour title positioned near the bottom.
+- Tour category.
+- Tour duration.
+- Starting price placeholder.
+- Small arrow button to explore the tour.
+
+CAROUSEL LAYOUT:
+
+- Full-width section.
+- Cards arranged horizontally.
+- Show approximately 2.5 to 3 cards on desktop.
+- Show approximately 1.2 cards on mobile.
+- Allow part of the next card to remain visible.
+- Use generous spacing between cards.
+- Keep the visual experience immersive and editorial.
+
+CAROUSEL FUNCTIONALITY:
+
+Implement the carousel using Vanilla JavaScript.
+
+Required behavior:
+
+1. Automatically advance every 4-5 seconds.
+2. Infinite looping behavior.
+3. Mouse drag interaction.
+4. Touch swipe interaction.
+5. Cursor changes to grab when hovering.
+6. Cursor changes to grabbing while dragging.
+7. Pause autoplay when mouse hovers over the carousel.
+8. Resume autoplay when the pointer leaves.
+9. Previous and next navigation buttons.
+10. Smooth sliding transitions.
+11. Responsive card sizing.
+12. Support keyboard navigation where appropriate.
+13. Do not allow text selection while dragging.
+14. Avoid accidental clicks after dragging.
+15. Respect prefers-reduced-motion.
+
+The carousel must feel natural and premium, not like a basic slider plugin.
+
+Use CSS scroll-snap or a custom Vanilla JavaScript carousel implementation.
+
+Do not use external carousel libraries.
+
+### SECTION 06 - ABOUT BROMO TOURS
+
+Headline:
+
+"MORE THAN A DESTINATION. AN EXPERIENCE TO REMEMBER."
+
+Create an editorial split layout.
+
+Left:
+Large Mount Bromo destination photography.
+
+Right:
+Brand introduction and storytelling.
+
+Suggested copy:
+
+"We believe every journey should be more than just reaching a destination. It should be about discovering new perspectives, connecting with local culture, and creating memories that last a lifetime."
+
+Include:
+- Local expertise.
+- Travel philosophy.
+- Personalized experiences.
+- Professional service.
+
+CTA:
+DISCOVER OUR STORY
+
+### SECTION 07 - WHY TRAVEL WITH US
+
+Headline:
+
+"YOUR ADVENTURE. OUR LOCAL EXPERTISE."
+
+Show four advantages:
+
+1. Local Knowledge.
+2. Personalized Travel Experiences.
+3. Professional Local Guides.
+4. Hassle-Free Travel Planning.
+
+Use minimal SVG icons, large typography, and concise descriptions.
+
+Avoid repetitive generic cards.
+
+### SECTION 08 - CUSTOM TRAVEL EXPERIENCE
+
+Create a full-width promotional section with dramatic Mount Bromo photography.
+
+Headline:
+
+"YOUR JOURNEY. YOUR RULES."
+
+Supporting text:
+
+"Looking for something more personal? Let us help create an unforgettable Mount Bromo adventure tailored to your interests and travel style."
+
+CTA:
+CREATE MY TRIP
+
+### SECTION 09 - TRAVEL GALLERY
+
+Headline:
+
+"THE BEAUTY OF BROMO, THROUGH OUR EYES."
+
+Create an immersive asymmetrical photography gallery.
+
+Include:
+- Mount Bromo sunrise.
+- Sea of Sand.
+- Volcanic landscapes.
+- Jeep adventures.
+- Savanna.
+- Local culture.
+- Traveler experiences.
+
+Use varied image dimensions and editorial compositions.
+
+Add subtle hover effects.
+
+### SECTION 10 - HOW IT WORKS
+
+Headline:
+
+"YOUR ADVENTURE STARTS HERE."
+
+Display four steps:
+
+01 - TELL US YOUR PLAN
+
+Share your travel preferences, date, and number of travelers.
+
+02 - CHOOSE YOUR EXPERIENCE
+
+Explore our available experiences and select the right adventure.
+
+03 - CONFIRM YOUR JOURNEY
+
+Our team will help arrange your travel details.
+
+04 - ENJOY THE ADVENTURE
+
+Get ready to experience Mount Bromo.
+
+Use a horizontal numbered layout on desktop and vertical timeline on mobile.
+
+### SECTION 11 - TESTIMONIALS CAROUSEL
+
+IMPORTANT:
+This section must also use a FULL-WIDTH AUTOMATIC HORIZONTAL CAROUSEL.
+
+Section headline:
+
+"TRAVEL STORIES FROM OUR GUESTS."
+
+Create a premium editorial testimonial carousel.
+
+DESIGN:
+
+- Full-width section.
+- Large testimonial content.
+- Elegant typography.
+- Customer profile image placeholder.
+- Customer name placeholder.
+- Country of origin.
+- Rating display where genuine data is available.
+- Travel experience reference.
+
+Use an elegant combination of Warm Sand and Forest Green.
+
+Do not use generic small testimonial cards.
+
+CAROUSEL FUNCTIONALITY:
+
+1. Automatic slide every 5-6 seconds.
+2. Infinite looping.
+3. Mouse drag support.
+4. Touch swipe support.
+5. Grab and grabbing cursor.
+6. Pause autoplay on hover.
+7. Resume autoplay after interaction.
+8. Previous and next arrows.
+9. Responsive layout.
+10. Smooth transitions.
+11. Keyboard accessibility.
+12. Respect reduced-motion settings.
+
+Use Vanilla JavaScript only.
+
+IMPORTANT:
+Do not fabricate real customer reviews, names, profile photographs, or ratings.
+
+Use clearly identifiable sample placeholders until genuine testimonials are supplied.
+
+### SECTION 12 - FAQ
+
+Headline:
+
+"GOOD TO KNOW BEFORE YOU GO."
+
+Create an interactive accordion with these questions:
+
+- How do I book a Mount Bromo tour?
+- What is the best time to visit Mount Bromo?
+- What should I bring for the sunrise tour?
+- Can I arrange a private jeep tour?
+- Are transportation and entrance fees included?
+- Can I customize my itinerary?
+- How can I contact your team?
+
+Use Vanilla JavaScript.
+
+### SECTION 13 - FINAL CTA + TRAVEL INQUIRY FORM
+
+Create a strong conversion section.
+
+Use a dark Forest Green background with Coral Orange CTA.
+
+Headline:
+
+"LET'S MAKE YOUR BROMO ADVENTURE UNFORGETTABLE."
+
+Supporting text:
+
+"Tell us about your travel plans. Our team will help you discover the perfect Mount Bromo experience."
+
+INQUIRY FORM FIELDS:
+
+- Full Name.
+- Email Address.
+- WhatsApp Number.
+- Preferred Travel Date.
+- Number of Travelers.
+- Preferred Tour.
+- Additional Message.
+
+Submit button:
+
+SEND MY TRAVEL INQUIRY
+
+FORM FUNCTIONALITY:
+
+Since this is a static website:
+
+- Implement frontend form validation.
+- Validate required fields.
+- Validate email format.
+- Generate a structured WhatsApp message.
+- Redirect to a configurable WhatsApp number using wa.me.
+- Do not pretend that data has been saved to a database.
+
+Include an alternative direct WhatsApp contact button.
+
+### SECTION 14 - FOOTER
+
+Include:
+
+- BROMO TOURS logo.
+- Short brand description.
+- Navigation links.
+- Popular experiences.
+- Contact information placeholders.
+- Social media links.
+- WhatsApp contact.
+- Copyright.
+
+Keep the footer dark, elegant, and visually consistent.
+
+## 5. GLOBAL INTERACTION AND ANIMATION
+
+Implement:
+
+- Sticky navigation.
+- Smooth scrolling.
+- Mobile navigation.
+- Hero entrance animation.
+- Scroll reveal.
+- Image hover zoom.
+- Tour carousel autoplay and drag.
+- Testimonial carousel autoplay and drag.
+- FAQ accordion.
+- Inquiry form validation.
+- WhatsApp integration.
+- Back-to-top button.
+- Floating WhatsApp button.
+
+All animations should feel smooth and premium.
+
+Respect prefers-reduced-motion.
+
+## 6. RESPONSIVE REQUIREMENTS
+
+Support:
+
+Desktop:
+- 1440px.
+- 1280px.
+
+Tablet:
+- 768px.
+
+Mobile:
+- 390px.
+- 375px.
+
+Mobile requirements:
+
+- Mobile-friendly navigation.
+- Responsive typography.
+- Single-column content where appropriate.
+- Touch-friendly controls.
+- Proper image cropping.
+- Fully functional touch carousels.
+- Optimized card dimensions.
+- No horizontal page overflow.
+- Comfortable form interactions.
+
+Do not simply shrink desktop layouts.
+
+## 7. CODE ARCHITECTURE
+
+Create this structure:
+
+bromo-tours/
+│
+├── index.html
+│
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   │
+│   ├── js/
+│   │   └── main.js
+│   │
+│   ├── images/
+│   │
+│   └── icons/
+│
+└── README.md
+
+Keep HTML, CSS, and JavaScript separated.
+
+Use semantic HTML5.
+
+Use CSS custom properties for the design system.
+
+Organize tour and testimonial sample data in a maintainable JavaScript structure.
+
+Keep WhatsApp contact information in one configurable location.
+
+Use reusable CSS classes and consistent naming.
+
+Prepare the structure for future integration with a backend and database.
+
+Do not implement backend features in this phase.
+
+## 8. PERFORMANCE AND ACCESSIBILITY
+
+- Optimize image loading.
+- Use WebP or AVIF where possible.
+- Lazy-load below-the-fold images.
+- Use descriptive image alt attributes.
+- Ensure readable color contrast.
+- Support keyboard navigation.
+- Avoid unnecessary JavaScript.
+- Avoid broken image URLs.
+- Avoid browser console errors.
+- Add SEO title and meta description.
+- Add Open Graph metadata.
+- Respect reduced-motion preferences.
+
+## 9. FINAL DELIVERY AND TESTING
+
+Create actual working files, not just code examples.
+
+Before finishing, verify:
+
+1. All website sections are implemented.
+2. Desktop layout matches the creative direction.
+3. Mobile layout works correctly.
+4. Navigation works.
+5. Both carousels autoplay correctly.
+6. Both carousels support mouse drag.
+7. Both carousels support mobile swipe.
+8. Autoplay pauses on hover.
+9. Navigation arrows work.
+10. FAQ accordion works.
+11. Inquiry form validates correctly.
+12. WhatsApp message generation works.
+13. No horizontal overflow.
+14. No broken images.
+15. No console errors.
+
+IMPORTANT FINAL INSTRUCTION:
+
+Build the entire BROMO TOURS static landing page now.
+
+Prioritize visual quality, immersive photography, professional typography, and the two fully functional horizontal carousels.
+
+Do not build an Admin Dashboard, backend, API, or database.
+
+Do not stop after creating the hero section. Complete all 14 sections.
+
+The final result must be a polished, visually distinctive, responsive, and interactive travel agency website ready for design review.

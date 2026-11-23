@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 120" fill="none">
+  <!-- Topographical contour lines of Tengger Caldera & Mount Bromo -->
+  <path d="M10 95 C40 60, 75 25, 110 55 C140 80, 155 45, 175 20" stroke="#D9ED74" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4" opacity="0.6"/>
+  <path d="M5 110 C38 72, 72 38, 108 68 C138 92, 158 58, 178 35" stroke="#F4EFE4" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/>
+  <circle cx="88" cy="48" r="4" fill="#FF6545"/>
+  <circle cx="88" cy="48" r="9" stroke="#FF6545" stroke-width="1" opacity="0.5"/>
+</svg>
