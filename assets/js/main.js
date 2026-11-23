@@ -235,7 +235,6 @@
     if (!track) return;
 
     track.innerHTML = SAMPLE_TOURS_DATA.map((tour, index) => {
-      const idxFormatted = String(index + 1).padStart(2, '0');
       return `
         <article class="tour-card" data-tour-index="${index}" data-tour-title="${escapeHtml(tour.title)}">
           <img
@@ -249,7 +248,6 @@
 
           <div class="tour-card-top">
             <span class="tour-category-pill">${escapeHtml(tour.category)}</span>
-            <span class="tour-sample-tag">SAMPLE ${idxFormatted}</span>
           </div>
 
           <div class="tour-card-bottom">
@@ -260,7 +258,15 @@
               </span>
             </div>
 
-            <h3 class="tour-title">${escapeHtml(tour.title)}</h3>
+            <h3 class="tour-title">
+              <a
+                href="#contact"
+                class="tour-title-link"
+                data-select-tour="${escapeHtml(tour.title)}"
+                aria-label="Inquire about ${escapeHtml(tour.title)}"
+                draggable="false"
+              >${escapeHtml(tour.title)}</a>
+            </h3>
             <p class="tour-highlight">${escapeHtml(tour.highlight)}</p>
 
             <div class="tour-card-footer">
@@ -701,7 +707,7 @@
       mobileToggle.setAttribute('aria-expanded', 'false');
       mobileDrawer.classList.remove('is-open');
       mobileDrawer.setAttribute('aria-hidden', 'true');
-      
+
       document.body.classList.remove('menu-open');
       document.body.style.overflow = '';
 

@@ -1387,6 +1387,21 @@ body.menu-open {
   margin-bottom: 0.5rem;
 }
 
+.tour-title-link,
+.tour-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease;
+  display: inline;
+}
+
+.tour-title-link:hover,
+.tour-title-link:focus-visible,
+.tour-title a:hover,
+.tour-title a:focus-visible {
+  color: var(--color-lime);
+}
+
 .tour-highlight {
   font-size: 0.88rem;
   line-height: 1.5;
