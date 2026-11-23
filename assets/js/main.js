@@ -24,9 +24,7 @@
     whatsappNumber: '6282142961911',
     whatsappDisplay: '+62 821-4296-1911',
     defaultDirectMessage:
-      'Hello BROMO TOURS! I am interested in planning a Mount Bromo adventure in East Java. Could you help me with available itineraries and details?',
-    toursAutoplayMs: 3000,
-    testimonialsAutoplayMs: 4500
+      'Hello BROMO TOURS! I am interested in planning a Mount Bromo adventure in East Java. Could you help me with available itineraries and details?'
   };
 
   /* ==========================================================================
@@ -168,74 +166,56 @@
     {
       id: 'dispatch-01',
       theme: 'forest',
-      badge: 'VERIFIED EXPEDITION // DAWN SUMMIT',
-      experienceRef: 'Experience: Bromo Sunrise & Crater Rim',
       quote:
         '“Standing on King Kong Hill at 5:00 AM with freshly brewed hot Java Arabica coffee while the golden sun broke over Semeru was completely surreal. Our Tenggerese driver navigated the morning crowds effortlessly.”',
       customerName: 'Elena & Marcus Vance',
       avatarCode: 'EV',
-      country: 'United Kingdom · London',
-      ratingDisplay: '★★★★★ 5.0 · Verified Journey'
+      country: 'United Kingdom · London'
     },
     {
       id: 'dispatch-02',
       theme: 'sand',
-      badge: 'VERIFIED EXPEDITION // 4X4 EXPEDITION',
-      experienceRef: 'Experience: Bromo Jeep Safari & Sand Sea',
       quote:
         '“Crossing the Sea of Sand in the classic 1980s Land Cruiser felt like landing on another planet. Our guide Pak Joko knew every secluded photo angle and made our family feel completely safe and cared for.”',
       customerName: 'David Chen & Family',
       avatarCode: 'DC',
-      country: 'Singapore',
-      ratingDisplay: '★★★★★ 5.0 · Verified Journey'
+      country: 'Singapore'
     },
     {
       id: 'dispatch-03',
       theme: 'forest',
-      badge: 'VERIFIED EXPEDITION // ASTROPHOTOGRAPHY',
-      experienceRef: 'Experience: Milky Way & Stargazing',
       quote:
         '“As a landscape photographer, timing is everything. Our crew timed the departure down to the minute, getting us set up before the galactic core rose above the smoking crater. Unbelievable precision and mountain mastery.”',
       customerName: 'Sophie Laurent',
       avatarCode: 'SL',
-      country: 'France · Lyon',
-      ratingDisplay: '★★★★★ 5.0 · Verified Journey'
+      country: 'France · Lyon'
     },
     {
       id: 'dispatch-04',
       theme: 'sand',
-      badge: 'VERIFIED EXPEDITION // BLUE FIRE CRATER',
-      experienceRef: 'Experience: Kawah Ijen Electric Blue Fire',
       quote:
         '“Descending into Ijen crater at 2:00 AM was an otherworldly adventure. The gas masks, headlamps, and our certified guide made what could have been an intimidating trek completely seamless and unforgettable.”',
       customerName: 'Liam Hemsworth',
       avatarCode: 'LH',
-      country: 'Australia · Melbourne',
-      ratingDisplay: '★★★★★ 5.0 · Verified Journey'
+      country: 'Australia · Melbourne'
     },
     {
       id: 'dispatch-05',
       theme: 'forest',
-      badge: 'VERIFIED EXPEDITION // WATERFALL ODYSSEY',
-      experienceRef: 'Experience: Tumpak Sewu & Bromo Combo',
       quote:
         '“The panoramic view from the rim of Tumpak Sewu with Mount Semeru towering behind took our breath away. Private hotel pickup in Surabaya and door-to-door logistics made this a 10/10 seamless journey.”',
       customerName: 'Maya & Hiroshi Tanaka',
       avatarCode: 'HT',
-      country: 'Japan · Tokyo',
-      ratingDisplay: '★★★★★ 5.0 · Verified Journey'
+      country: 'Japan · Tokyo'
     },
     {
       id: 'dispatch-06',
       theme: 'sand',
-      badge: 'VERIFIED EXPEDITION // BORNEO RIVER SAFARI',
-      experienceRef: 'Experience: Tanjung Puting Houseboat Cruise',
       quote:
         '“Sleeping on the deck of our private wooden Klotok under the canopy of stars while hearing the sounds of the jungle was magical. Seeing wild orangutans at Camp Leakey was a lifelong dream fulfilled.”',
       customerName: 'Sarah Jenkins',
       avatarCode: 'SJ',
-      country: 'United States · California',
-      ratingDisplay: '★★★★★ 5.0 · Verified Journey'
+      country: 'United States · California'
     }
   ];
 
@@ -349,396 +329,7 @@
   }
 
   /* ==========================================================================
-     5. INFINITE HORIZONTAL CAROUSEL ENGINE (VANILLA JS)
-     Supports:
-     - Automatic advance (4-5s for Tours, 5-6s for Testimonials)
-     - Seamless infinite looping via cloned head/tail sets
-     - Mouse drag & touch swipe with grab/grabbing cursors
-     - Suppresses text selection & accidental clicks after dragging
-     - Pauses on mouse hover / focus / pointer down, resumes on leave
-     - Prev / Next buttons & Keyboard ArrowLeft / ArrowRight navigation
-     - Respects prefers-reduced-motion
-     ========================================================================== */
-  class InfiniteEditorialCarousel {
-    constructor(options) {
-      this.viewport = document.getElementById(options.viewportId);
-      this.track = document.getElementById(options.trackId);
-      this.prevBtn = document.getElementById(options.prevBtnId);
-      this.nextBtn = document.getElementById(options.nextBtnId);
-      this.counterEl = document.getElementById(options.counterId);
-      this.progressEl = options.progressId ? document.getElementById(options.progressId) : null;
-      this.autoplayMs = options.autoplayMs || 3800;
-      this.transitionDurationMs = 850;
-      this.transitionEasing = 'cubic-bezier(0.22, 1, 0.36, 1)';
-      this.transitionFallbackTimer = null;
-      this.isVisible = true;
-
-      if (!this.viewport || !this.track) return;
-
-      this.originalItems = Array.from(this.track.children);
-      this.totalOriginal = this.originalItems.length;
-      if (this.totalOriginal === 0) return;
-
-      this.cloneCount = this.totalOriginal;
-      this.currentIndex = this.cloneCount; // Start at first real item after prepended clones
-      this.isTransitioning = false;
-      this.isDragging = false;
-      this.wasDragged = false;
-      this.startX = 0;
-      this.startY = 0;
-      this.currentTranslate = 0;
-      this.prevTranslate = 0;
-      this.dragDeltaX = 0;
-      this.autoplayTimer = null;
-      this.isHovered = false;
-
-      this.init();
-    }
-
-    init() {
-      this.setupClones();
-      this.allSlides = Array.from(this.track.children);
-      this.updatePosition(false);
-      this.updateIndicators();
-      this.bindEvents();
-      this.startAutoplay();
-    }
-
-    setupClones() {
-      const prependFragment = document.createDocumentFragment();
-      const appendFragment = document.createDocumentFragment();
-
-      this.originalItems.forEach((item) => {
-        const cloneBefore = item.cloneNode(true);
-        cloneBefore.setAttribute('aria-hidden', 'true');
-        cloneBefore.classList.add('is-clone');
-        prependFragment.appendChild(cloneBefore);
-
-        const cloneAfter = item.cloneNode(true);
-        cloneAfter.setAttribute('aria-hidden', 'true');
-        cloneAfter.classList.add('is-clone');
-        appendFragment.appendChild(cloneAfter);
-      });
-
-      this.track.insertBefore(prependFragment, this.track.firstChild);
-      this.track.appendChild(appendFragment);
-    }
-
-    getStepSize() {
-      const firstSlide = this.allSlides[0];
-      if (!firstSlide) return 380;
-      const slideRect = firstSlide.getBoundingClientRect();
-      const trackStyle = window.getComputedStyle(this.track);
-      const gap = parseFloat(trackStyle.columnGap || trackStyle.gap || '28') || 28;
-      return slideRect.width + gap;
-    }
-
-    updatePosition(animate = true) {
-      const step = this.getStepSize();
-      this.currentTranslate = -this.currentIndex * step;
-      this.prevTranslate = this.currentTranslate;
-
-      if (animate && !isReducedMotion()) {
-        this.track.style.transition = `transform ${this.transitionDurationMs}ms ${this.transitionEasing}`;
-      } else {
-        this.track.style.transition = 'none';
-      }
-
-      this.track.style.transform = `translate3d(${this.currentTranslate}px, 0, 0)`;
-
-      if (!animate) {
-        // Force synchronous reflow to ensure instant jump applies before any subsequent animation
-        void this.track.offsetHeight;
-      }
-    }
-
-    getRealIndex() {
-      const raw = (this.currentIndex - this.cloneCount) % this.totalOriginal;
-      return raw < 0 ? raw + this.totalOriginal : raw;
-    }
-
-    updateIndicators() {
-      const realIndex = this.getRealIndex();
-      if (this.counterEl) {
-        const currentStr = String(realIndex + 1).padStart(2, '0');
-        const totalStr = String(this.totalOriginal).padStart(2, '0');
-        this.counterEl.textContent = `${currentStr} / ${totalStr}`;
-      }
-      if (this.progressEl) {
-        const pct = ((realIndex + 1) / this.totalOriginal) * 100;
-        this.progressEl.style.width = `${pct}%`;
-      }
-    }
-
-    scheduleTransitionFallback() {
-      if (this.transitionFallbackTimer) {
-        clearTimeout(this.transitionFallbackTimer);
-      }
-      this.transitionFallbackTimer = setTimeout(() => {
-        if (this.isTransitioning) {
-          this.handleLoopBoundary();
-        }
-      }, this.transitionDurationMs + 80);
-    }
-
-    next() {
-      if (this.isTransitioning) return;
-      this.isTransitioning = true;
-      this.currentIndex += 1;
-      this.updatePosition(true);
-      this.updateIndicators();
-      this.scheduleTransitionFallback();
-
-      if (isReducedMotion()) {
-        this.handleLoopBoundary();
-      }
-    }
-
-    prev() {
-      if (this.isTransitioning) return;
-      this.isTransitioning = true;
-      this.currentIndex -= 1;
-      this.updatePosition(true);
-      this.updateIndicators();
-      this.scheduleTransitionFallback();
-
-      if (isReducedMotion()) {
-        this.handleLoopBoundary();
-      }
-    }
-
-    handleLoopBoundary() {
-      if (this.transitionFallbackTimer) {
-        clearTimeout(this.transitionFallbackTimer);
-        this.transitionFallbackTimer = null;
-      }
-      this.isTransitioning = false;
-      while (this.currentIndex >= this.cloneCount + this.totalOriginal) {
-        this.currentIndex -= this.totalOriginal;
-        this.updatePosition(false);
-      }
-      while (this.currentIndex < this.cloneCount) {
-        this.currentIndex += this.totalOriginal;
-        this.updatePosition(false);
-      }
-    }
-
-    startAutoplay() {
-      this.stopAutoplay();
-      if (isReducedMotion() || this.isDragging || !this.isVisible) return;
-
-      this.autoplayTimer = window.setInterval(() => {
-        if (!document.hidden && !this.isDragging && this.isVisible) {
-          this.next();
-        }
-      }, this.autoplayMs);
-    }
-
-    stopAutoplay() {
-      if (this.autoplayTimer) {
-        window.clearInterval(this.autoplayTimer);
-        this.autoplayTimer = null;
-      }
-    }
-
-    bindEvents() {
-      // Transition end for seamless infinite loop jump
-      this.track.addEventListener('transitionend', (e) => {
-        if (e.target !== this.track) return;
-        this.handleLoopBoundary();
-      });
-
-      // Pause when off-screen, resume when intersecting viewport
-      if ('IntersectionObserver' in window) {
-        this.visibilityObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              this.isVisible = entry.isIntersecting;
-              if (this.isVisible) {
-                this.startAutoplay();
-              } else {
-                this.stopAutoplay();
-              }
-            });
-          },
-          { threshold: 0.05 }
-        );
-        this.visibilityObserver.observe(this.viewport);
-      }
-
-      // Page visibility change (background tab throttling)
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          this.stopAutoplay();
-        } else if (this.isVisible && !this.isDragging) {
-          this.handleLoopBoundary();
-          this.startAutoplay();
-        }
-      });
-
-      // Navigation Buttons (Left/Right manual slide)
-      if (this.nextBtn) {
-        this.nextBtn.addEventListener('click', () => {
-          this.isTransitioning = false;
-          this.next();
-          this.startAutoplay();
-        });
-      }
-
-      if (this.prevBtn) {
-        this.prevBtn.addEventListener('click', () => {
-          this.isTransitioning = false;
-          this.prev();
-          this.startAutoplay();
-        });
-      }
-
-      // Keyboard navigation when viewport has focus
-      this.viewport.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') {
-          e.preventDefault();
-          this.isTransitioning = false;
-          this.next();
-          this.startAutoplay();
-        } else if (e.key === 'ArrowLeft') {
-          e.preventDefault();
-          this.isTransitioning = false;
-          this.prev();
-          this.startAutoplay();
-        }
-      });
-
-      // Unified Pointer Events (Touch, Mouse, Trackpad swipe right & left)
-      this.viewport.addEventListener('pointerdown', (e) => {
-        if (e.pointerType === 'mouse' && e.button !== 0) return;
-        this.onPointerDown(e);
-      });
-
-      this.viewport.addEventListener('pointermove', (e) => {
-        if (!this.isDragging) return;
-        this.onPointerMove(e);
-      });
-
-      this.viewport.addEventListener('pointerup', (e) => {
-        if (!this.isDragging) return;
-        this.onPointerUp(e);
-      });
-
-      this.viewport.addEventListener('pointercancel', (e) => {
-        if (!this.isDragging) return;
-        this.onPointerUp(e);
-      });
-
-      // Prevent accidental link clicks immediately after a drag/swipe gesture
-      this.viewport.addEventListener(
-        'click',
-        (e) => {
-          if (this.wasDragged) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.wasDragged = false;
-          }
-        },
-        true
-      );
-
-      // Prevent native image drag ghosting
-      this.viewport.addEventListener('dragstart', (e) => e.preventDefault());
-
-      // Recalculate dimensions on resize
-      let resizeTimer = null;
-      window.addEventListener('resize', () => {
-        window.clearTimeout(resizeTimer);
-        resizeTimer = window.setTimeout(() => {
-          this.isTransitioning = false;
-          this.updatePosition(false);
-        }, 120);
-      });
-    }
-
-    onPointerDown(e) {
-      if (this.isTransitioning) {
-        this.handleLoopBoundary();
-      }
-      this.isDragging = true;
-      this.wasDragged = false;
-      this.startX = e.clientX;
-      this.startY = e.clientY;
-      this.dragDeltaX = 0;
-      this.viewport.classList.add('is-dragging');
-      this.track.style.transition = 'none';
-      this.stopAutoplay();
-
-      try {
-        if (this.viewport.setPointerCapture) {
-          this.viewport.setPointerCapture(e.pointerId);
-        }
-      } catch (err) { }
-    }
-
-    onPointerMove(e) {
-      const dx = e.clientX - this.startX;
-      const dy = e.clientY - this.startY;
-
-      // Allow natural vertical page scroll if gesture is primarily vertical
-      if (Math.abs(dy) > Math.abs(dx) && Math.abs(dx) < 10) {
-        return;
-      }
-
-      if (Math.abs(dx) > 6) {
-        this.wasDragged = true;
-        if (e.cancelable) {
-          e.preventDefault();
-        }
-      }
-
-      this.dragDeltaX = dx;
-      this.currentTranslate = this.prevTranslate + dx;
-      this.track.style.transform = `translate3d(${this.currentTranslate}px, 0, 0)`;
-    }
-
-    onPointerUp(e) {
-      this.isDragging = false;
-      this.viewport.classList.remove('is-dragging');
-      try {
-        if (this.viewport.hasPointerCapture && this.viewport.hasPointerCapture(e.pointerId)) {
-          this.viewport.releasePointerCapture(e.pointerId);
-        }
-      } catch (err) { }
-
-      const step = this.getStepSize();
-      const threshold = Math.min(45, step * 0.12);
-
-      if (this.dragDeltaX < -threshold) {
-        // Swiped Left -> Advance forward to next card
-        const slidesMoved = Math.max(1, Math.round(Math.abs(this.dragDeltaX) / step));
-        this.currentIndex += slidesMoved;
-      } else if (this.dragDeltaX > threshold) {
-        // Swiped Right -> Go backward to previous card
-        const slidesMoved = Math.max(1, Math.round(Math.abs(this.dragDeltaX) / step));
-        this.currentIndex -= slidesMoved;
-      }
-
-      this.isTransitioning = true;
-      this.updatePosition(true);
-      this.updateIndicators();
-      this.scheduleTransitionFallback();
-
-      if (isReducedMotion() || Math.abs(this.dragDeltaX) <= threshold) {
-        this.handleLoopBoundary();
-      }
-
-      // Reset accidental click blocker shortly after release
-      window.setTimeout(() => {
-        this.wasDragged = false;
-      }, 100);
-
-      this.startAutoplay();
-    }
-  }
-
-  /* ==========================================================================
-     5B. CONTINUOUS MARQUEE CAROUSEL (NON-STOP DRIFT + MANUAL SWIPE LEFT/RIGHT)
+     5. CONTINUOUS MARQUEE CAROUSEL ENGINE (NON-STOP DRIFT + MANUAL SWIPE)
      Features:
      - Non-stop continuous marquee movement via requestAnimationFrame
      - Seamless infinite loop via clone sets
@@ -746,7 +337,7 @@
      - Real-time inertia/momentum deceleration after swipe
      - Arrow buttons (< and >) nudge smooth step navigation
      - Pause when off-screen via IntersectionObserver to conserve resources
-     - Never permanently pauses on passive hover
+     - Hold on hover, resumes on leave
      ========================================================================== */
   class ContinuousMarqueeCarousel {
     constructor(options) {
@@ -1213,8 +804,8 @@
       });
     }
 
-    // Active section observer for nav links
-    const trackedSections = ['home', 'about', 'experiences', 'tours', 'why-us', 'contact']
+    // Active section observer for primary navigation links
+    const trackedSections = ['home', 'about', 'experiences', 'tours', 'contact']
       .map((id) => document.getElementById(id))
       .filter(Boolean);
 
@@ -1236,39 +827,6 @@
 
       trackedSections.forEach((sec) => navObserver.observe(sec));
     }
-  }
-
-  /* ==========================================================================
-     6B. WHY US LEDGER ACTIVE CONTROLLER (SECTION 07)
-     ========================================================================== */
-  function initWhyUsLedger() {
-    const list = document.querySelector('.why-ledger-list');
-    if (!list) return;
-
-    const rows = Array.from(list.querySelectorAll('.why-ledger-row'));
-    if (!rows.length) return;
-
-    // By default ensure first item is active
-    rows[0].classList.add('is-active');
-
-    rows.forEach((row) => {
-      row.addEventListener('mouseenter', () => {
-        rows.forEach((r) => r.classList.remove('is-active'));
-        row.classList.add('is-active');
-      });
-
-      row.addEventListener('click', () => {
-        rows.forEach((r) => r.classList.remove('is-active'));
-        row.classList.add('is-active');
-      });
-    });
-
-    list.addEventListener('mouseleave', () => {
-      // Revert active green state back to the first row when mouse leaves the list
-      rows.forEach((r, idx) => {
-        r.classList.toggle('is-active', idx === 0);
-      });
-    });
   }
 
   /* ==========================================================================
@@ -1554,9 +1112,8 @@
       speed: 1.05
     });
 
-    // 4. Initialize Navigation, Why Us Ledger, FAQ Accordion, WhatsApp links, Form validation & Scroll Reveal
+    // 4. Initialize Navigation, FAQ Accordion, WhatsApp links, Form validation & Scroll Reveal
     initNavigation();
-    initWhyUsLedger();
     initFaqAccordion();
     initWhatsAppAndTourTriggers();
     initInquiryForm();
