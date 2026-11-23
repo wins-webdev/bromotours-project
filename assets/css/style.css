@@ -228,8 +228,8 @@ button {
 }
 
 .section-lead {
-  font-size: clamp(1rem, 1.25vw, 1.16rem);
-  line-height: 1.68;
+  font-size: 1rem;
+  line-height: 1.65;
   color: var(--color-charcoal-muted);
   max-width: 56ch;
 }
