@@ -1059,6 +1059,7 @@ body.menu-open {
 
 .exp-sticky-body {
   max-width: 880px;
+  margin-top: auto;
 }
 
 .exp-tag {
@@ -3046,6 +3047,14 @@ body.menu-open {
   .exp-coords,
   .exp-highlights-row {
     display: none !important;
+  }
+
+  .exp-sticky-content {
+    justify-content: flex-end;
+  }
+
+  .exp-sticky-body {
+    margin-top: auto;
   }
 
   .exp-card--wide,
